@@ -247,9 +247,40 @@
           "platform": "str: sweb",
           "device": "str: pc"
         },
-        "x-bili-web-req-json": { "spm_id": "str: 333.1368" }
+        "x-bili-web-req-json": {
+          "spm_id": "str: 333.1368"
+        }
       },
       "comment": "用户动态信息"
+    },
+    "upower_qa_list": {
+      "url": "https://api.bilibili.com/x/upower/qa/list",
+      "method": "GET",
+      "verify": true,
+      "wbi": false,
+      "wbi2": false,
+      "params": {
+        "up_mid": "int: uid",
+        "anchor": "int: 动态偏移用，第一页为 0",
+        "privilege_type": "int: 0",
+        "fans_filter": "int: 0",
+        "up_filter": "int: 0",
+        "ps": "int: 每页数量",
+        "t": "int: 时间戳，单位毫秒"
+      },
+      "comment": "用户充电问答列表"
+    },
+    "upower_qa_detail": {
+      "url": "https://api.bilibili.com/x/upower/qa/info",
+      "method": "GET",
+      "verify": true,
+      "wbi": false,
+      "wbi2": false,
+      "params": {
+        "qa_id": "int: 问答 ID",
+        "t": "int: 时间戳，单位毫秒"
+      },
+      "comment": "用户充电问答"
     },
     "bangumi": {
       "url": "https://api.bilibili.com/x/space/bangumi/follow/list",

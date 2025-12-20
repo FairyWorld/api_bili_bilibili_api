@@ -1159,6 +1159,7 @@ class Credential:
         dedeuserid: Union[str, None] = None,
         ac_time_value: Union[str, None] = None,
         proxy: Union[str, None] = None,
+        **kwargs
     ) -> None:
         """
         各字段获取方式查看：https://nemo2011.github.io/bilibili-api/#/get-credential.md
@@ -1192,6 +1193,9 @@ class Credential:
         self.ac_time_value = ac_time_value
         self.proxy = proxy
 
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+
     def get_cookies(self) -> dict:
         """
         获取请求 Cookies 字典
@@ -1208,6 +1212,10 @@ class Credential:
         }
         if self.dedeuserid:
             cookies.update({"DedeUserID": self.dedeuserid})
+
+        for key, value in self.__dict__.items():
+            if key not in cookies and value is not None:
+                cookies[key] = value
 
         return cookies
 
@@ -1372,6 +1380,17 @@ class Credential:
         c.buvid4 = cookies.get("buvid4")
         c.dedeuserid = cookies.get("DedeUserID")
         c.ac_time_value = cookies.get("ac_time_value")
+
+        for key, value in cookies.items():
+            if key not in [
+                "SESSDATA",
+                "bili_jct",
+                "buvid3",
+                "buvid4",
+                "DedeUserID",
+                "ac_time_value",
+            ]:
+                setattr(c, key, value)
         return c
 
     def __str__(self):
