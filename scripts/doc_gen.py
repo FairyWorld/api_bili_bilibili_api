@@ -404,6 +404,8 @@ def parse_docstring1(doc: str):
 import bilibili_api
 
 for module in all_funcs:
+    if module[0][0] in ["_pyinstaller", "tools", "exceptions", "clients"]:
+        continue
     docs_dir = "./docs/modules/" + module[0][0] + ".md"
     file = open(docs_dir, "w+")
     print("BEGIN", module[0][0])
