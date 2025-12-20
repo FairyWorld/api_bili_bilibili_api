@@ -5,26 +5,8 @@
 #
 # modified
 
-import os
 import re
-import sys
-import getopt
 
-DEBUG = False
-
-def fileopen(input_file):
-    encodings = ["utf-32", "utf-16", "utf-8", "cp1252", "gb2312", "gbk", "big5"]
-    tmp = ""
-    for enc in encodings:
-        try:
-            with open(input_file, mode="r", encoding=enc) as fd:
-                tmp = fd.read()
-                break
-        except:
-            if DEBUG:
-                print(enc + " failed")
-            continue
-    return [tmp, enc]
 
 # 修复命名问题
 def srt2ass_from_string(srt_string: str):
@@ -33,7 +15,7 @@ def srt2ass_from_string(srt_string: str):
     if "\ufeff" in srt_string:
         srt_string = srt_string.replace("\ufeff", "")
         utf8bom = "\ufeff"
-        
+
     lines = [x.strip() for x in srt_string.split("\n") if x.strip()]
     subLines = ""
     tmpLines = ""
@@ -97,22 +79,3 @@ Format: Layer, Start, End, Style, Actor, MarginL, MarginR, MarginV, Effect, Text
     #    output_str = output_str.encode(encoding)
 
     return output_str
-
-
-def srt2ass(input_file, output_file):
-    if '.ass' in input_file:
-        return input_file
-
-    src = fileopen(input_file)
-    tmp = src[0]
-    # encoding = src[1]
-    
-    output_str = srt2ass_from_string(tmp)   
-    #    output_str = output_str.encode(encoding)
-
-    with open(output_file, "w", encoding="utf8") as output:
-        output.write(output_str)
-
-    output_file = output_file.replace("\\", "\\\\")
-    output_file = output_file.replace("/", "//")
-    return output_file
