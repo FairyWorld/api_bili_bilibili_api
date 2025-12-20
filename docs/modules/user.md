@@ -55,6 +55,8 @@ from bilibili_api import user
   - [def get\_uid()](#def-get\_uid)
   - [async def get\_up\_stat()](#async-def-get\_up\_stat)
   - [async def get\_uplikeimg()](#async-def-get\_uplikeimg)
+  - [async def get\_upower\_qa\_detail()](#async-def-get\_upower\_qa\_detail)
+  - [async def get\_upower\_qa\_list()](#async-def-get\_upower\_qa\_list)
   - [async def get\_user\_fav\_tag()](#async-def-get\_user\_fav\_tag)
   - [async def get\_user\_info()](#async-def-get\_user\_info)
   - [async def get\_user\_medal()](#async-def-get\_user\_medal)
@@ -708,6 +710,34 @@ medialist排序顺序。
 
 
 **Returns:** `dict`:  调用 API 返回的结果
+
+
+
+
+### async def get_upower_qa_detail()
+
+获取充电问答详情信息。
+
+根据问答 ID 获取单条充电问答的详细内容
+
+
+| name | type | description |
+| - | - | - |
+| `qa_id` | `int` | 充电问答的唯一 ID，可从`get_upower_qa_list` 返回的数据中获取。 |
+
+
+
+
+### async def get_upower_qa_list()
+
+获取用户充电问答列表。
+
+
+| name | type | description |
+| - | - | - |
+| `anchor` | `int, optional` | 该值为第一次调用本方法时，数据中会有个 anchor 字段，指向下一动态列表第一条动态（类似单向链表）。根据上一次获取结果中的 anchor 字段值，循环填充该值即可获取到全部动态 |
+
+**Returns:** `dict`:  调用接口返回的内容。
 
 
 
