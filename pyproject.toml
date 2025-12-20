@@ -36,6 +36,12 @@ dependencies = [
     "PyJWT",
 ]
 
+[project.urls]
+Homepage = "https://github.com/Nemo2011/bilibili-api"
+Repository = "https://github.com/Nemo2011/bilibili-api"
+Documentation = "https://nemo2011.github.io/bilibili-api"
+"Bug Report" = "https://github.com/Nemo2011/bilibili-api/issues"
+
 [tool.setuptools.dynamic]
 version = { attr = "bilibili_api.BILIBILI_API_VERSION" }
 readme = { file = ["README.md"], content-type = "text/markdown" }
