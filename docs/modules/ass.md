@@ -25,7 +25,6 @@ from bilibili_api import ass
 - [async def make\_lrc\_file\_subtitle()](#async-def-make\_lrc\_file\_subtitle)
 - [async def make\_simple\_json\_file\_subtitle()](#async-def-make\_simple\_json\_file\_subtitle)
 - [async def make\_srt\_file\_subtitle()](#async-def-make\_srt\_file\_subtitle)
-- [async def request\_subtitle\_languages()](#async-def-request\_subtitle\_languages)
 - [async def request\_subtitle()](#async-def-request\_subtitle)
 
 ---
@@ -266,24 +265,6 @@ from bilibili_api import ass
 | `lan_code` | `str, optional` | 字幕语言代码，如 ”中文（自动翻译）” 和 ”中文（自动生成）“ 为 "ai-zh" |
 | `credential` | `Credential, optional` | Credential 类. 必须在此处或传入的视频 obj 中传入凭据，两者均存在则优先此处 |
 
-
-
-
----
-
-## async def request_subtitle_languages()
-
-获取远程字幕语言列表
-
-
-| name | type | description |
-| - | - | - |
-| `obj` | `Union[Video,Episode]` | 对象 |
-| `page_index` | `int, optional` | 分 P 索引 |
-| `cid` | `int, optional` | cid |
-| `credential` | `Credential, optional` | Credential 类. 必须在此处或传入的视频 obj 中传入凭据，两者均存在则优先此处 |
-
-**Returns:** `AssSubtitleObject`:  字幕对象
 
 
 
